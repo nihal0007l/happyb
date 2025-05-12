@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Honey!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('your-image.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2.8em;
+      text-shadow: 2px 2px 5px black;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      background-color: pink;
+      border-radius: 50%;
+      animation: float 6s ease-in-out forwards;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-110vh) rotate(360deg); }
+    }
+
+    .popup {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      display: none;
+      font-size: 1.3em;
+      max-width: 90%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      button {
+        font-size: 1em;
+        padding: 12px 25px;
+      }
+      .popup {
+        font-size: 1.1em;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hey Honey 🎂</h1>
+  <button onclick="showMessage()">Click Me!</button>
+
+  <div class="popup" id="popupMessage">
+    🎉 Happy Birthday Honey! 🎉<br>
+    Wishing you joy, laughter, and unforgettable moments! 💖
+  </div>
+
+  <div id="balloonsContainer"></div>
+
+  <script>
+    function showMessage() {
+      document.getElementById('popupMessage').style.display = 'block';
+
+      for (let i = 0; i < 30; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        balloon.style.animationDuration = (Math.random() * 2 + 4) + 's';
+        document.getElementById('balloonsContainer').appendChild(balloon);
+      }
+    }
+  </script>
+
+</body>
+</html>
